@@ -1,14 +1,6 @@
 # STFateFlow
 
-STFateFlow is a flow-matching framework for learning coupled gene-expression and spatial dynamics from time-resolved spatial transcriptomics data. It uses FUGWOT transport plans to align cells across time and a point-cloud transformer to model continuous state transitions.
-
-## Highlights
-
-- Joint modeling of gene-expression and spatial trajectories
-- FUGWOT-based cell pairing across observed time points
-- Support for both 2D and 3D spatial coordinates
-- Interpolation at held-out time points
-- Potential estimation along learned developmental trajectories
+STFateFlow is a flow-matching-based method for learning gene-expression and spatial dynamics from time-resolved spatial transcriptomics data.
 
 ## Project Layout
 
