@@ -1,0 +1,49 @@
+# STFateFlow
+
+STFateFlow is a flow-matching framework for learning coupled gene-expression and spatial dynamics from time-resolved spatial transcriptomics data. It uses FUGWOT transport plans to align cells across time and a point-cloud transformer to model continuous state transitions.
+
+## Highlights
+
+- Joint modeling of gene-expression and spatial trajectories
+- FUGWOT-based cell pairing across observed time points
+- Support for both 2D and 3D spatial coordinates
+- Interpolation at held-out time points
+- Potential estimation along learned developmental trajectories
+
+## Project Layout
+
+- `core/models/STFateFlow.py`: main flow-matching model
+- `core/models/backbones/`: point-cloud transformer backbone
+- `core/datasets/model_dataset.py`: timepoint datasets and FUGWOT sampling
+- `core/utils/fgwot.py`: cached transport-plan sampler
+- `notebooks/`: preprocessing, training, inference, and potential analysis
+- `experiments/`: baselines, ablations, and evaluation scripts
+- `docs/`: model and dataset documentation
+
+## Requirements
+
+The project is designed for Python 3.11 and a CUDA-enabled PyTorch environment. Its main dependencies include PyTorch, PyTorch Geometric, Scanpy, AnnData, moscot/OTT-JAX, NumPy, SciPy, pandas, and Matplotlib.
+
+## Quick Start
+
+Open the notebook for the dataset of interest and update its data/checkpoint paths if necessary:
+
+```bash
+cd /data/yuz/spatialtranscriptomics/spatiotemporal/spatiotemporal_codes/STFateFlow
+jupyter lab notebooks/axolotl_infer.ipynb
+```
+
+The main Python interfaces are:
+
+```python
+from core.datasets.model_dataset import STFateFlowDataset, stfateflow_collate
+from core.models.STFateFlow import STFateFlow_Module
+from core.models.checkpointing import load_stfateflow_checkpoint
+```
+
+See `docs/fugwot_parameters_and_dataset_summary.md` for transport parameters and dataset statistics, and `docs/stfateflow_flow_matching_model.md` for the model formulation.
+
+## Included Datasets
+
+The current workflows cover ARTISTA axolotl regeneration, MOSTA mouse embryogenesis, and PRISTA4D regeneration data.
+
